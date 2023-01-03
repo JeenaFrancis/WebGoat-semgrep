@@ -33,10 +33,10 @@ jobs:
         if: always()
   
       - uses: actions/checkout@v2
-
+       
       - uses: actions/download-artifact@v3
         with:
-          sarif_file: semgrep.sarif
+          name: semgrep.sarif
         if: always()
 
       - name: Display structure of downloaded files
