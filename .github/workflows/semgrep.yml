@@ -31,8 +31,11 @@ jobs:
         with:
           sarif_file: semgrep.sarif
         if: always()
-      - name: Download a Build Artifact
-        uses: action/download-sarif@v2
-        with:
-          sarif_file: semgrep.sarif
-         
+  
+      - uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v3
+
+      - name: Display structure of downloaded files
+ 
+        run: ls -R
