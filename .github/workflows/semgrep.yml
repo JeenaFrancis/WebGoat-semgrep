@@ -32,13 +32,7 @@ jobs:
           sarif_file: semgrep.sarif
         if: always()
   
-      - uses: actions/checkout@v2
-       
-      - uses: actions/download-artifact@v3
+      - name: Download a single artifact
+        uses: actions/download-sarif@v3
         with:
-          name: semgrep.sarif
-        if: always()
-
-      - name: Display structure of downloaded files
- 
-        run: ls -R
+         name: semgrep.sarif
