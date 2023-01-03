@@ -32,7 +32,8 @@ jobs:
           sarif_file: semgrep.sarif
         if: always()
   
-      - name: Download a single artifact
-        uses: actions/download-artifact@v3
+      - name: publish test results
+        uses: actions/upload-artifact@v1
         with:
-         name: semgrep.sarif
+            name: report
+           
