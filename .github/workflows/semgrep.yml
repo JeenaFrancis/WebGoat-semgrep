@@ -32,4 +32,3 @@ jobs:
         with:
           sarif_file: semgrep.sarif
         if: always()
-
