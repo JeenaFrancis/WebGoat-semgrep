@@ -32,8 +32,10 @@ jobs:
           sarif_file: semgrep.sarif
         if: always()
   
-      - name: publish test results
-        uses: actions/upload-artifact@v1
+      - uses: actions/download-artifact@v3
         with:
-            name: report
+         name: my-artifact
+         path: semgrep.sarif
+    
+      
            
