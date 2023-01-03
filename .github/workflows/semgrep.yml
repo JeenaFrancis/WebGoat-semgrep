@@ -3,6 +3,7 @@ name: Semgrep
 on: push
 
 jobs:
+   
   semgrep:
     # User definable name of this GitHub Actions job.
     name: Scan
@@ -31,11 +32,22 @@ jobs:
         with:
           sarif_file: semgrep.sarif
         if: always()
+      
+      - name: Step 1 - Create a temporary artifact downloads folder
+        run: mkdir downloads
+      - name: step 2 - Add artifacts to publish to the temp folder
+        run: |
+          cd downloads
+          echo 'sengrep'    > sengrep.html
+          echo 'bravo'    > bravo.html
+         
+          cd ..
   
-      - uses: actions/download-artifact@v3
-        with:
-         name: my-artifact
-         path: semgrep.sarif
+      - name: Step 3 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: assets-for-download
+          path: downloads
     
       
            
