@@ -31,3 +31,7 @@ jobs:
         with:
           sarif_file: semgrep.sarif
         if: always()
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          sarif_file: semgrep.sarif 
