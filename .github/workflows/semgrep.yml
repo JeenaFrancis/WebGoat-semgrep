@@ -33,6 +33,6 @@ jobs:
         if: always()
   
       - name: Download a single artifact
-        uses: actions/download-sarif@v3
+        uses: actions/download-artifact@v3
         with:
          name: semgrep.sarif
