@@ -1,8 +1,5 @@
 name: Semgrep
-on:
-  push:
- 
-
+on: push
 jobs:
   semgrep:
     # User-definable name of this GitHub Actions job:
