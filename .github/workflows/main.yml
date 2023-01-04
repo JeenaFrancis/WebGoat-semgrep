@@ -1,0 +1,38 @@
+on:
+  push:
+      branches:
+      - develop
+
+jobs:
+    build:
+      name: build and test
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v1
+        - name: Install robotframework and dependencies
+          run: |
+            pip install selenium
+            pip install robotframework
+            pip install robotframework-seleniumlibrary
+            pip install robotframework-imaplibrary
+            pip install robotframework-httplibrary
+            pip install robotframework-requests
+        - name: Download and install chromedriver
+          run: |
+            wget http://chromedriver.storage.googleapis.com/77.0.3865.10/chromedriver_linux64.zip
+            sudo unzip chromedriver_linux64.zip -d /usr/local/bin
+            export CHROME_BIN=chromium-browser
+        - name: Run robot tests
+          run: |
+            cd robot/tests
+            python -m robot -i ready bookingform.robot
+        - name: publish test results
+          uses: actions/upload-artifact@v1
+          with:
+            name: report
+            path: report.html
+        - name: clean up stuff
+          run: |
+            history
+            pwd
