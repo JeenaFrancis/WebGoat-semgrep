@@ -34,7 +34,7 @@ jobs:
         if: always()
         
       - name: Download a Build Artifact
-        uses: github/codeql-action/download-sarif@v2
+        uses: action/download-sarif@v2
         with:
           name: report
           path: semgrep.sarif
