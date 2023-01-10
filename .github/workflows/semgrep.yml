@@ -32,11 +32,12 @@ jobs:
         with:
           sarif_file: semgrep.sarif
         if: always()
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v3.0.2
+      - name: Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
         with:
-          name: report
-          path: semgrep.sarif
+          name: results
+          #path: /home/runner/*/*/*/*.json
+          path: downloads
         
  
       
